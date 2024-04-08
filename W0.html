@@ -26,14 +26,15 @@
 
         .image-container {
             display: flex;
-            flex-wrap: wrap; /* Para permitir que las imágenes se envuelvan si no hay suficiente espacio */
-            justify-content: center; /* Para centrar las imágenes horizontalmente */
-            gap: 20px; /* Espacio entre las imágenes */
+            justify-content: center;
+            gap: 20px;
+            max-width: 600px; /* Ajusta el ancho máximo según tus necesidades */
+            margin: 0 auto; /* Centra el contenedor horizontalmente */
         }
 
         .image-container img {
-            width: 100%;
-            max-width: 200px;
+            width: 100%; /* Ocupa todo el ancho disponible del contenedor */
+            max-width: 200px; /* Tamaño máximo de las imágenes */
             height: auto;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -91,9 +92,9 @@
     <div class="container">
         <h1>De quina època ets?</h1>
         <div class="image-container">
-            <a href="noms/orquidia.html"><img src="media/W/WE/1.jpg" alt="Imagen 2"></a>
-            <a href="WM.html"><img src="media/W/WE/2.jpg" alt="Imagen 1"></a>
-            <a href="WK.html"><img src="media/W/WE/3.jpg" alt="Imagen 2"></a>
+            <a href="noms/orquidia.html"><img src="media/W/WE/1.jpg" alt="Imagen 1"></a>
+            <a href="WM.html"><img src="media/W/WE/2.jpg" alt="Imagen 2"></a>
+            <a href="WK.html"><img src="media/W/WE/3.jpg" alt="Imagen 3"></a>
         </div>
     </div>
 
@@ -114,21 +115,21 @@
     </a>
 </body>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const images = document.querySelectorAll(".image-container img");
-            
-            images.forEach(image => {
-                image.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    const targetUrl = image.parentElement.getAttribute("href");
-                    image.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-                    image.style.transform = "scale(1.1)";
-                    setTimeout(function() {
-                        window.location.href = targetUrl;
-                    }, 300);
-                });
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const images = document.querySelectorAll(".image-container img");
+        
+        images.forEach(image => {
+            image.addEventListener("click", function(event) {
+                event.preventDefault();
+                const targetUrl = image.parentElement.getAttribute("href");
+                image.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+                image.style.transform = "scale(1.1)";
+                setTimeout(function() {
+                    window.location.href = targetUrl;
+                }, 300);
             });
         });
-    </script>
+    });
+</script>
 </html>
