@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selecciona una imagen</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 800px; /* Ancho máximo del contenedor */
+            margin: 0 auto; /* Centrar el contenedor horizontalmente */
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Centra horizontalmente las imágenes */
+            gap: 20px;
+        }
+
+        .image-container a {
+            width: calc(50% - 10px); /* Ancho de cada imagen (50% del contenedor menos el espacio entre ellas) */
+            max-width: 200px;
+            margin-bottom: 20px; /* Espacio inferior entre las filas */
+        }
+
+        .image-container img {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        /* Animación imágenes */
+        .image-container img:active {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+        }
+
+        .back-button, .close-button {
+            position: fixed;
+            background-color: #333;
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .back-button {
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .close-button {
+            bottom: 20px;
+            left: 20px;
+        }
+
+        .back-button:hover, .close-button:hover {
+            background-color: #555;
+        }
+
+        .back-icon, .close-icon {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selecciona una imagen:</h1>
+        <div class="image-container">
+            <a href="noms/susanna.html"><img src="media/W/WM/susanna.jpg" alt="Imagen 1"></a>
+            <a href="noms/sandra.html"><img src="media/W/WM/sandra.jpg" alt="Imagen 2"></a>
+            <a href="noms/silvia.html" style="width: 100%;"><img src="media/W/WM/silvia.jpg" alt="Imagen 3"></a>
+        </div>
+    </div>
+
+    <!-- Botón de retroceso -->
+    <a href="W0.html" class="back-button">
+        <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0V0z" fill="none"/>
+            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+        </svg>
+    </a>
+        <!-- Close button -->
+        <a href="index.html" class="close-button">
+            <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path fill="none" d="M0 0h24v24H0V0z"/>
+                <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
+            </svg>
+        </a>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const images = document.querySelectorAll(".image-container img");
+            
+            images.forEach(image => {
+                image.addEventListener("click", function(event) {
+                    event.preventDefault();
+                    const targetUrl = image.parentElement.getAttribute("href");
+                    image.style.transition = "transform 0.3s ease, opacity 0.3s ease";
+                    image.style.transform = "scale(1.1)";
+                    setTimeout(function() {
+                        window.location.href = targetUrl;
+                    }, 300);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
