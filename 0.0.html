@@ -12,14 +12,22 @@
             background-color: #f0f0f0;
             position: relative;
             min-height: 100vh;
+            animation: fadeIn 3s ease-in-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
         }
 
         .container {
             text-align: center;
             padding: 20px;
-            max-width: 100%; /* Ancho máximo del contenedor */
-            overflow-x: auto; /* Para manejar el desplazamiento horizontal */
-            white-space: nowrap; /* Para que las imágenes estén una al lado de la otra */
+            position: relative; 
         }
 
         h1 {
@@ -27,18 +35,15 @@
         }
 
         .image-container {
-            display: inline-block; /* Cambiado a inline-block para mantener las imágenes en línea */
-            white-space: nowrap; /* Para que las imágenes estén una al lado de la otra */
-        }
-
-        .image-container a {
-            display: inline-block; /* Para mantener las imágenes en línea */
-            margin: 0; /* Eliminar el margen para mantener las imágenes pegadas */
-            max-width: none; /* Permitir que las imágenes tengan su ancho natural */
+            position: relative;
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
         }
 
         .image-container img {
-            width: 100%; /* Ajustar el ancho de la imagen al 100% */
+            width: 100%;
+            max-width: 200px;
             height: auto;
             cursor: pointer;
             transition: transform 0.3s ease;
@@ -87,62 +92,27 @@
             fill: white;
         }
 
-        #play-btn {
-    background-color: #4caf50;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    font-size: 18px;
-    cursor: pointer;
-}
-
+        .material-icons {
+            text-decoration: none !important;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Selecciona una imagen:</h1>
+        <h1>Estas segur?</h1>
         <div class="image-container">
-            <a href="noms/alba.html"><img src="media/W/WK/alba.png" alt="Imagen 1">
-            <a href="noms/carlota.html"><img src="media/W/WK/Carlota.png" alt="Imagen 2">
-            <a href="noms/montse.html"><img src="media/W/WK/montse.png" alt="Imagen 3"></a>
+            <a href="1.html"><img src="media/0/YES.png" alt="Imagen 1"></a>
+            <a href="index.html"><img src="media/0/NO.png" alt="Imagen 2"></a>
         </div>
     </div>
 
-    <div id="player-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <audio id="audio" controls autoplay>
-            <source src="noms/musica/0-Netes--Rosalia - Motomami.mp3" type="audio/mpeg">
-        </audio>
-        <button id="play-btn" onclick="playAudio()" style="margin-top: auto;">Reproducir</button>
-    </div>
 
-
-
-    <!-- Botón de retroceso -->
-    <a href="W0.html" class="back-button">
-        <svg class="back-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path d="M0 0h24v24H0V0z" fill="none"/>
-            <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
-        </svg>
-    </a>
-    <!-- Close button -->
-    <a href="index.html" class="close-button">
-        <svg class="close-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-            <path fill="none" d="M0 0h24v24H0V0z"/>
-            <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/>
-        </svg>
-    </a>
+</body>
 
     <script>
-        function playAudio() {
-            var audio = document.getElementById('audio');
-            audio.play();
-            document.getElementById('play-btn').style.display = 'none';
-        }
-
         document.addEventListener("DOMContentLoaded", function() {
             const images = document.querySelectorAll(".image-container img");
-
+            
             images.forEach(image => {
                 image.addEventListener("click", function(event) {
                     event.preventDefault();
