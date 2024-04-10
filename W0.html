@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciona una imagen</title>
+    <title>Test Familiar</title>
     <style>
         body {
             margin: 0;
@@ -86,6 +86,17 @@
         .material-icons {
             text-decoration: none !important;
         }
+
+        #play-btn {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
     </style>
 </head>
 <body>
@@ -96,6 +107,12 @@
             <a href="WM.html"><img src="media/W/WE/2.jpg" alt="Imagen 2"></a>
             <a href="WK.html"><img src="media/W/WE/3.jpg" alt="Imagen 3"></a>
         </div>
+    </div>
+    <div id="player-container" style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <audio id="audio" controls autoplay>
+            <source src="noms/musica/0-dones-Abba - Mamma Mia.mp3" type="audio/mpeg">
+        </audio>
+        <button id="play-btn" onclick="playAudio()" style="margin-top: auto;">Play</button>
     </div>
 
     <!-- Return button -->
@@ -116,6 +133,13 @@
 </body>
 
 <script>
+
+function playAudio() {
+    var audio = document.getElementById('audio');
+    audio.play();
+    document.getElementById('play-btn').style.display = 'none';
+}
+
     document.addEventListener("DOMContentLoaded", function() {
         const images = document.querySelectorAll(".image-container img");
         

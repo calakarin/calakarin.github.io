@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selecciona una imagen</title>
+    <title>Test Familiar</title>
     <style>
         body {
             margin: 0;
@@ -99,32 +99,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>Estas segur?</h1>
+        <h1 id="seguridad">Estas segur?</h1>
         <div class="image-container">
-            <a href="1.html"><img src="media/0/YES.png" alt="Imagen 1"></a>
-            <a href="index.html"><img src="media/0/NO.png" alt="Imagen 2"></a>
+            <a href="#" id="noButton"><img src="media/0/YES.png" alt="Imagen 2"></a>
+            <a href="index.html"><img src="media/0/NO.png" alt="Imagen 1"></a>
         </div>
     </div>
 
+<script>
+    let moltCount = 0;
+    const noButton = document.getElementById('noButton');
+    const seguridadHeading = document.getElementById('seguridad');
 
-</body>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            const images = document.querySelectorAll(".image-container img");
-            
-            images.forEach(image => {
-                image.addEventListener("click", function(event) {
-                    event.preventDefault();
-                    const targetUrl = image.parentElement.getAttribute("href");
-                    image.style.transition = "transform 0.3s ease, opacity 0.3s ease";
-                    image.style.transform = "scale(1.1)";
-                    setTimeout(function() {
-                        window.location.href = targetUrl;
-                    }, 300);
-                });
-            });
-        });
-    </script>
+    noButton.addEventListener('click', function(event) {
+        event.preventDefault();
+        moltCount++;
+        const newSeguridadText = "Estas " + "molt ".repeat(moltCount) + "segur?";
+        seguridadHeading.textContent = newSeguridadText;
+    });
+</script>
 </body>
 </html>
